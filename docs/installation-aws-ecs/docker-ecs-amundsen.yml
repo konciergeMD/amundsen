@@ -23,7 +23,7 @@ services:
         driver: awslogs
         options: 
           awslogs-group: amundsen-neo4j
-          awslogs-region: us-west-2
+          awslogs-region: us-east-1
           awslogs-stream-prefix: amundsen-neo4j
 
   elasticsearch:
@@ -39,11 +39,11 @@ services:
         driver: awslogs
         options: 
           awslogs-group: amundsen-elasticsearch
-          awslogs-region: us-west-2
+          awslogs-region: us-east-1
           awslogs-stream-prefix: amundsen-elasticsearch
 
   amundsensearch:
-      image: amundsendev/amundsen-search:1.1.1
+      image: amundsendev/amundsen-search:1.4.1
       container_name: amundsensearch
       ports:
         - 5001:5000
@@ -55,11 +55,11 @@ services:
         driver: awslogs
         options: 
           awslogs-group: amundsensearch
-          awslogs-region: us-west-2
+          awslogs-region: us-east-1
           awslogs-stream-prefix: amundsensearch
 
   amundsenmetadata:
-      image: amundsendev/amundsen-metadata:1.0.7
+      image: amundsendev/amundsen-metadata:1.1.2
       container_name: amundsenmetadata
       depends_on:
         - neo4j
@@ -71,11 +71,11 @@ services:
         driver: awslogs
         options: 
           awslogs-group: amundsenmetadata
-          awslogs-region: us-west-2
+          awslogs-region: us-east-1
           awslogs-stream-prefix: amundsenmetadata
 
   amundsenfrontend:
-      image: amundsendev/amundsen-frontend:1.0.5
+      image: amundsendev/amundsen-frontend:1.1.0
       container_name: amundsenfrontend
       depends_on:
         - amundsenmetadata
@@ -89,7 +89,7 @@ services:
         driver: awslogs
         options: 
           awslogs-group: amundsenfrontend
-          awslogs-region: us-west-2
+          awslogs-region: us-east-1
           awslogs-stream-prefix: amundsenfrontend
 
 
